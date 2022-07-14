@@ -1,0 +1,28 @@
+.about {
+	width: 100%;
+	min-height: 100vh;
+	text-align: center;
+
+	&__desc {
+		display: inline-block;
+		margin: 0;
+		width: 60%;
+		font-size: 3rem;
+		line-height: 1;
+	}
+}
+
+.grid {
+	display: grid;
+	grid-template: auto / repeat(4, 1fr);
+	gap: 30px;
+
+	&__box {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border: 1px solid black;
+		width: 100px;
+		height: 100px;
+	}
+}

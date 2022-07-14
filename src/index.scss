@@ -1,0 +1,88 @@
+@font-face {
+  font-family: "Neuzeit-Grotesk";
+  src: local("Neuzeit-Grotesk"),
+    url("./fonts/Neuzeit_ff/Neuzeit\ Grotesk\ W01\ Regular.otf")
+      format("truetype");
+  font-weight: 400;
+}
+// imports styles of components
+@import url(./styles/components/navigation.scss);
+@import url(./styles/components/home.scss);
+@import url(./styles/components/about.scss);
+@import url(./styles/components/projects.scss);
+@import url(./styles/components/footer.scss);
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body,
+#app,
+#app>div {
+	height: 100%
+}
+
+html,
+body,
+form,
+fieldset,
+table,
+tr,
+td,
+img {
+  margin: 0;
+  padding: 0;
+  font: 62.5%/150% "Neuzeit-Grotesk", helvetica, sans-serif;
+}
+
+input,
+button,
+select,
+textarea,
+optgroup,
+option {
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+}
+
+html {
+	overflow-x: hidden;
+	scroll-behavior: smooth;
+}
+
+body {
+	font-size: 5rem;
+  background-color: #411f19;
+	color: wheat;
+}
+
+// wrap
+.modal-wrap {
+	//height: 100vh;
+	//pointer-events: none;
+	//position: fixed;
+	//width: 100vw;
+	//z-index: 100;
+}
+
+.flex {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.container {
+	width: 100%;
+	max-width: 1260px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0 1em;
+}
