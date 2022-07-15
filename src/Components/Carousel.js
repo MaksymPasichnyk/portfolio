@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import css from "../assets/icons/css.png";
@@ -22,6 +22,38 @@ export default function Carousel() {
 		{icon: gulp, title: 'Gulp'}, 
 		{icon: tailwind, title: 'Tailwind'}
 	];
+	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+	useEffect(() => {
+		window.addEventListener('resize', updateDimensions)
+
+		return () => {
+			window.removeEventListener('resize', updateDimensions)
+		}
+	}, [])
+
+	function updateDimensions() {
+		setWindowWidth(window.innerWidth)
+
+	}
+
+	function getSlidesPerView(windowWidth) {
+		let slidesPerView;
+		if (windowWidth > 1200) {
+			slidesPerView = 5;
+		} else if (windowWidth > 991) {
+			slidesPerView = 4;
+		} else if (windowWidth > 771) {
+			slidesPerView = 3;
+		} else if (windowWidth > 556) {
+			slidesPerView = 2;
+		} else if (windowWidth > 400) {
+			slidesPerView = 1;
+		}
+		return slidesPerView
+	}
+
+	console.log(getSlidesPerView(windowWidth))
 
   const boxes = skills.map((skill, index) => (
 		<SwiperSlide key={index}>
@@ -38,9 +70,9 @@ export default function Carousel() {
 				loop={true}
 				modules={[Autoplay, Navigation, Pagination, Scrollbar, A11y]}
 				spaceBetween={10}
-				slidesPerView={5}
-				onSlideChange={() => console.log('slide change')}
-				onSwiper={(swiper) => console.log(swiper)}
+				slidesPerView={getSlidesPerView(windowWidth)}
+				//onSlideChange={() => console.log('slide change')}
+				//onSwiper={(swiper) => console.log(swiper)}
 				autoplay={{
 					delay: 2000,
 					disableOnInteraction: false

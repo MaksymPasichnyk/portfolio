@@ -21,7 +21,27 @@
 }
 
 // colors
+[data-theme="dark"] {
+	--color-bg: #0e141b;
+	--color-bg-offset: #252526;
+	--color-text: #ffffff;
+	--color-text-offset: #818a91;
+	--color-border: #2d2d2d;
+	--color-primary: #ff5277;
+	--color-primary-offset: #ff2957;
+	--color-secondary: #43a9a3;
+} 
 
+[data-theme='moomoo'] {
+	--color-bg: #fef6e4;
+	--color-bg-offset: #f3e1d8;
+	--color-text: #172c66;
+	--color-text-offset: #006e8a;
+	--color-border: #f3d2c1;
+	--color-primary: #f582ae;
+	--color-primary-offset: #ff3d6a;
+	--color-secondary: #8bd3dd;
+}
 
 html,
 body,
@@ -72,8 +92,8 @@ html {
 
 body {
 	font-size: 5rem;
-  background-color: rgb(53, 36, 36);
-	color: wheat;
+  background-color: rgb(186, 143, 86);
+	color: #272343;
 	// #411f19
 }
 
@@ -98,5 +118,5 @@ body {
 	max-width: 1260px;
 	margin-left: auto;
 	margin-right: auto;
-	padding: 0 1em;
+	padding: 0 25px;
 }

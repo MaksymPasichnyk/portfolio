@@ -73,11 +73,10 @@ export default function Navigation() {
             onMouseOut={() => {
               setHoveredLink("");
             }}
-            hashSpy={true}
             offset={0}
             onSetActive={() => handleSetActive("home")}
             spy={true}
-            activeClass="active"
+            //activeClass="active"
             to="home"
             className="navigation__link"
           >
@@ -96,8 +95,7 @@ export default function Navigation() {
             onMouseOut={() => {
               setHoveredLink("");
             }}
-            hashSpy={true}
-            offset={0}
+            offset={-50}
             onSetActive={() => handleSetActive("about")}
             spy={true}
             activeClass="active"
@@ -119,11 +117,10 @@ export default function Navigation() {
             onMouseOut={() => {
               setHoveredLink("");
             }}
-            hashSpy={true}
-            offset={0}
+            offset={-50}
             onSetActive={() => handleSetActive("projects")}
             spy={true}
-            activeClass="active"
+            //activeClass="active"
             to="projects"
             className="navigation__link"
           >
@@ -142,8 +139,6 @@ export default function Navigation() {
             onMouseOut={() => {
               setHoveredLink("");
             }}
-            hashSpy={true}
-            offset={-600}
             onSetActive={() => handleSetActive("contacts")}
             spy={true}
             activeClass="active"

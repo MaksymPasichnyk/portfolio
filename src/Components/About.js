@@ -19,7 +19,7 @@ export default function About() {
 					</div>
 				</div>
 				<div className="stack flex">
-					<h3>Skills:</h3>
+					<h3 className="about__subtitle">Skills & Tools:</h3>
 					<Slider />
 				</div>
 			</div>

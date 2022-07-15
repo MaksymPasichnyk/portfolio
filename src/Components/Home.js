@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-scroll";
 
 export default function Home() {
   const arrowRightIcon = <FontAwesomeIcon icon={faArrowRight} />;
@@ -15,10 +16,13 @@ export default function Home() {
             <br />
             I'm frontend developer.
           </h1>
-          <a href={"#projects"} className="page-btn">
+          <Link
+						offset={-50}
+						to="projects"
+						className="page-btn">
             My Projects
             <i>{arrowRightIcon}</i>
-          </a>
+          </Link>
         </div>
       </div>
     </section>
