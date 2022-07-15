@@ -5,6 +5,10 @@
       format("truetype");
   font-weight: 400;
 }
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+
 // imports styles of components
 @import url(./styles/components/navigation.scss);
 @import url(./styles/components/home.scss);
@@ -30,7 +34,8 @@ fieldset,
 table,
 tr,
 td,
-img {
+img,
+p {
   margin: 0;
   padding: 0;
   font: 62.5%/150% "Neuzeit-Grotesk", helvetica, sans-serif;
@@ -50,6 +55,11 @@ option {
 
 h1, h2, h3, h4, h5, h6 {
 	margin: 0;
+	line-height: normal;
+}
+
+h1, h2 {
+	padding: 2rem 0;
 }
 
 html {

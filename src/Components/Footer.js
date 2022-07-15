@@ -13,8 +13,8 @@ export default function Footer() {
 	))
 
 	return (
-		<footer name="contacts" className="footer">
-				<nav id="contacts" className="socials">
+		<footer className="footer">
+				<nav name="contacts" id="contacts" className="socials">
 					{elements}
 				</nav>
 		</footer>

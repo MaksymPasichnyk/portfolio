@@ -3,10 +3,8 @@
 	align-items: center;
 	justify-content: center;
 	width: 100%;
-	min-height: 100vh;
-	background: rgb(76, 74, 69);
+	background: wheat;
 	position: relative;
-	margin-top: 2rem;
 
 	&::before {
 		content: "";
@@ -29,7 +27,9 @@
 }
 
 .socials {
+	min-height: 100vh;
 	display: flex;
+	align-items: center;
 	justify-content: center;
 	list-style: none;
 	color: #411f19;

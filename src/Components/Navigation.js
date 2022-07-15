@@ -60,7 +60,8 @@ export default function Navigation() {
       <ul className="navigation__list">
         <li className="navigation__item">
           <Link
-						offset={100}
+						hashSpy={true}
+						offset={0}
 						onSetActive={() => handleSetActive('home')}
 						spy={true}
 						activeClass="active"
@@ -76,7 +77,8 @@ export default function Navigation() {
         </li>
         <li className="navigation__item">
           <Link
-						offset={100}
+						hashSpy={true}
+						offset={0}
 						onSetActive={() => handleSetActive('about')}
 						spy={true}
 						activeClass="active"
@@ -92,7 +94,8 @@ export default function Navigation() {
         </li>
         <li className="navigation__item">
           <Link
-						offset={100}
+						hashSpy={true}
+						offset={0}
 						onSetActive={() => handleSetActive('projects')}
 						spy={true}
 						activeClass="active"
@@ -108,6 +111,7 @@ export default function Navigation() {
         </li>
         <li className="navigation__item">
           <Link
+						hashSpy={true}
 						offset={0}
 						onSetActive={() => handleSetActive('contacts')}
 						spy={true}

@@ -16,7 +16,7 @@ export default function Home() {
             I'm frontend developer.
           </h1>
           <button className="page-btn">
-            View my work
+            View Projects
             <i>{arrowRightIcon}</i>
           </button>
         </div>
