@@ -8,34 +8,40 @@ import {
 import { BsBricks } from "react-icons/bs";
 import { GiBrickWall } from "react-icons/gi";
 import { RiContactsLine, RiContactsFill } from "react-icons/ri";
-import { Link, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+import {
+  Link,
+  DirectLink,
+  Element,
+  Events,
+  animateScroll as scroll,
+  scrollSpy,
+  scroller,
+} from "react-scroll";
 import { Scroll } from "react-scroll/modules/mixins/Helpers";
 
 export default function Navigation() {
   const [hoveredLink, setHoveredLink] = useState("");
   const [currentLink, setCurrentLink] = useState("home");
 
-
-	useEffect(() => {
-		Events.scrollEvent.register('begin', function(to, element) {
-      console.log('begin', arguments[0]);
-			setCurrentLink(to)
-			
+  useEffect(() => {
+    Events.scrollEvent.register("begin", function (to, element) {
+      console.log("begin", arguments[0]);
+      setCurrentLink(to);
     });
 
-    Events.scrollEvent.register('end', function(to, element) {
-      console.log('end', arguments);
+    Events.scrollEvent.register("end", function (to, element) {
+      console.log("end", arguments);
     });
 
-		scrollSpy.update();
+    scrollSpy.update();
 
-		return () => {
-			Events.scrollEvent.remove('begin');
-    	Events.scrollEvent.remove('end');
-		}
-	}, [])
+    return () => {
+      Events.scrollEvent.remove("begin");
+      Events.scrollEvent.remove("end");
+    };
+  }, []);
 
-	function scrollToTop() {
+  function scrollToTop() {
     scroll.scrollToTop();
   }
 
@@ -52,7 +58,8 @@ export default function Navigation() {
   }
 
   function handleSetActive(to) {
-    setCurrentLink(to)
+    setCurrentLink(to);
+		console.log(to)
   }
 
   return (
@@ -60,12 +67,18 @@ export default function Navigation() {
       <ul className="navigation__list">
         <li className="navigation__item">
           <Link
-						hashSpy={true}
-						offset={0}
-						onSetActive={() => handleSetActive('home')}
-						spy={true}
-						activeClass="active"
-						to="home"
+            onMouseOver={() => {
+              setHoveredLink("home");
+            }}
+            onMouseOut={() => {
+              setHoveredLink("");
+            }}
+            hashSpy={true}
+            offset={0}
+            onSetActive={() => handleSetActive("home")}
+            spy={true}
+            activeClass="active"
+            to="home"
             className="navigation__link"
           >
             {hoveredLink === "home" || currentLink === "home" ? (
@@ -77,12 +90,18 @@ export default function Navigation() {
         </li>
         <li className="navigation__item">
           <Link
-						hashSpy={true}
-						offset={0}
-						onSetActive={() => handleSetActive('about')}
-						spy={true}
-						activeClass="active"
-						to="about"
+            onMouseOver={() => {
+              setHoveredLink("about");
+            }}
+            onMouseOut={() => {
+              setHoveredLink("");
+            }}
+            hashSpy={true}
+            offset={0}
+            onSetActive={() => handleSetActive("about")}
+            spy={true}
+            activeClass="active"
+            to="about"
             className="navigation__link"
           >
             {hoveredLink === "about" || currentLink === "about" ? (
@@ -94,12 +113,18 @@ export default function Navigation() {
         </li>
         <li className="navigation__item">
           <Link
-						hashSpy={true}
-						offset={0}
-						onSetActive={() => handleSetActive('projects')}
-						spy={true}
-						activeClass="active"
-						to="projects"
+            onMouseOver={() => {
+              setHoveredLink("projects");
+            }}
+            onMouseOut={() => {
+              setHoveredLink("");
+            }}
+            hashSpy={true}
+            offset={0}
+            onSetActive={() => handleSetActive("projects")}
+            spy={true}
+            activeClass="active"
+            to="projects"
             className="navigation__link"
           >
             {hoveredLink === "projects" || currentLink === "projects" ? (
@@ -111,12 +136,18 @@ export default function Navigation() {
         </li>
         <li className="navigation__item">
           <Link
-						hashSpy={true}
-						offset={0}
-						onSetActive={() => handleSetActive('contacts')}
-						spy={true}
-						activeClass="active"
-						to="contacts"
+            onMouseOver={() => {
+              setHoveredLink("contacts");
+            }}
+            onMouseOut={() => {
+              setHoveredLink("");
+            }}
+            hashSpy={true}
+            offset={-600}
+            onSetActive={() => handleSetActive("contacts")}
+            spy={true}
+            activeClass="active"
+            to="contacts"
             className="navigation__link"
           >
             {hoveredLink === "contacts" || currentLink === "contacts" ? (

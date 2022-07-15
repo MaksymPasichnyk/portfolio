@@ -5,7 +5,7 @@
 
 	&__title {
 		border-top: 1px solid;
-		border-bottom: 1px solid;
+
 		text-align: left;
 		padding-left: 2rem;
 		margin-bottom: 30px;
@@ -15,7 +15,7 @@
 .project-list {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-	grid-gap: 1rem;
+	grid-gap: 2rem;
 	grid-template-rows: fit-content(50%);
 
 
@@ -25,7 +25,7 @@
 }
 
 	.project-card {
-		background-color: green;
+		border: 5px solid wheat;
 		cursor: pointer;
 
 		&__inner {
@@ -40,7 +40,6 @@
 
 			img {
 				width: 100%;
-				height: 100%;
 				object-fit: cover;
 			}
 		}
@@ -55,8 +54,15 @@
 			flex-direction: column;
 			transition: all .5s;
 			justify-content: center;
+			align-items: center;
 			transform: translateY(-100%);
 			color: #411f19;
+			padding: 2rem;
+		}
+
+		&__desc {
+			font-size: 2rem;
+			font-style: italic;
 		}
 
 		&__link {
@@ -64,6 +70,17 @@
 			display: block;
 			width: 100%;
 			height: 100%;
+		}
+
+		&__github-link {
+			display: inline-flex;
+			z-index: 1001;
+			color: rgb(119, 99, 60);
+			transition: all .3s;
+
+			&:hover {
+				color:rgb(91, 70, 28);
+			}
 		}
 
 		&:hover {

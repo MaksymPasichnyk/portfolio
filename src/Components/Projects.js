@@ -8,61 +8,67 @@ import react from "../assets/icons/react.png";
 import sass from "../assets/icons/sass.png";
 import html from "../assets/icons/html.png";
 import tailwind from "../assets/icons/tailwind.svg";
+import { AiOutlineGithub } from "react-icons/ai"
 
 export default function Projects() {
   const projects = [
     {
       title: "Snake Game",
       description: "Simple snake game",
-			url: 'https://maksympasichnyk.github.io/snake-game/',
+      url: "https://maksympasichnyk.github.io/snake-game/",
       imgUrl: snakeImg,
-			stack: [html, css, javascript],
+      stack: [html, css, javascript],
+			githubUrl: 'https://github.com/MaksymPasichnyk'
     },
     {
       title: "Startup2",
-      description: "Development",
+      description:
+        "Description thaat should be here so i need to write everything that i want so fsdasdasd",
       imgUrl: test,
-			stack: [react, sass, gulp],
+      stack: [react, sass, gulp],
+			githubUrl: 'https://github.com/MaksymPasichnyk'
     },
     {
       title: "Startup3",
       description: "Development",
       imgUrl: test,
-			stack: [html, tailwind, javascript],
+      stack: [html, tailwind, javascript],
+			githubUrl: 'https://github.com/MaksymPasichnyk'
     },
     {
       title: "Startup4",
       description: "Development",
       imgUrl: test,
-			stack: [phaser, javascript],
+      stack: [phaser, javascript],
+			githubUrl: 'https://github.com/MaksymPasichnyk'
     },
     {
       title: "Startup5",
       description: "Development",
       imgUrl: test,
-			stack: [tailwind, react],
+      stack: [tailwind, react],
+			githubUrl: 'https://github.com/MaksymPasichnyk'
     },
   ];
 
   const projectElements = projects.map((project, index) => (
     <div key={index} className="project-card">
-			<div className="project-card__inner">
-					<div className="project-card__img">
-						<img src={project.imgUrl} width="100%" height="100%" />
-					</div>
-					<div className="project-card__info">
-						<a className="project-card__link" href={project.url}></a>
-						<h5 className="project-card__title">{project.title}</h5>
-						<p className="project-card__desc">{project.description}</p>
-						<div className="project-card__stack">
-							{
-								project.stack.map((item, index) => {
-									return <img src={item} width={33} height={33} />
-								})
-							}
-						</div>
-			</div>
-			</div>
+      <div className="project-card__inner">
+        <div className="project-card__img">
+          <img src={project.imgUrl} width="100%" height="320px" />
+        </div>
+        <div className="project-card__info">
+          <a className="project-card__link" href={project.url}></a>
+          <h5 className="project-card__title">{project.title}</h5>
+          <p className="project-card__desc">{project.description}</p>
+          <div className="project-card__stack">
+            {project.stack.map((item, index) => {
+              return <img src={item} width={33} height={33} />;
+            })}
+          </div>
+					<a className="project-card__github-link" href={project.githubUrl} ><AiOutlineGithub /></a>
+        </div>
+      </div>
     </div>
   ));
 

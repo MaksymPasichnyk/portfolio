@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.18c4dee1.css",
+    "main.js": "/static/js/main.6c5db610.js",
+    "static/media/phaser.png": "/static/media/phaser.a74de63a3436d2e2e3f0.png",
+    "static/media/web-nestflix.jpeg": "/static/media/web-nestflix.f9f0edde1679715663a8.jpeg",
+    "static/media/Neuzeit Grotesk W01 Regular.otf": "/static/media/Neuzeit Grotesk W01 Regular.825a65296c253785a253.otf",
+    "static/media/tailwind.svg": "/static/media/tailwind.79614a5f61617ba49a0891494521226b.svg",
+    "index.html": "/index.html",
+    "main.18c4dee1.css.map": "/static/css/main.18c4dee1.css.map",
+    "main.6c5db610.js.map": "/static/js/main.6c5db610.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.18c4dee1.css",
+    "static/js/main.6c5db610.js"
+  ]
+}

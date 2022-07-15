@@ -27,7 +27,7 @@
 }
 
 .socials {
-	min-height: 100vh;
+	min-height: 140px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -38,5 +38,10 @@
 	&__link {
 		display: flex;
 		cursor: pointer;
+		transition: all .3s;
+
+		&:hover {
+			opacity: .7;
+		}
 	}
 }

@@ -9,16 +9,13 @@ export default function About() {
 				<div className="about__row">
 					<div className="about__column">
 						<p className="about__desc text">
-							I have got one year commercial experience as a markup developer.
-							I'm highly motivated and ambitius, resultoriented, easy to learn and
+							I have got commercial experience as a markup developer.
+							I'm highly motivated and ambitius, result oriented, easy to learn and
 							always ready to accept any advices from more experienced colleagues. I would like to receive more
 							interesting projects in which I could not only implement already
 							acquired skills but also learn something new. I do my best for
 							development and work achievement.
 						</p>
-					</div>
-					<div className="about__column">
-
 					</div>
 				</div>
 				<div className="stack flex">

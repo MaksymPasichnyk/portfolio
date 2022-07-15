@@ -15,10 +15,10 @@ export default function Home() {
             <br />
             I'm frontend developer.
           </h1>
-          <button className="page-btn">
-            View Projects
+          <a href={"#projects"} className="page-btn">
+            My Projects
             <i>{arrowRightIcon}</i>
-          </button>
+          </a>
         </div>
       </div>
     </section>
