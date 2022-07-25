@@ -1,4 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import {
+  Events,
+  scrollSpy,
+} from "react-scroll";
+import { ThemeContext } from "../context/Theme";
+import NavigationList from "./NavigationList";
+import NavigationItem from "./NavigationItem";
+import ThemeToggleButton from "./ThemeToggleList";
+
+// import icons 
+import { RiContactsLine, RiContactsFill } from "react-icons/ri";
 import {
   AiOutlineHome,
   AiFillHome,
@@ -7,30 +18,51 @@ import {
 } from "react-icons/ai";
 import { BsBricks } from "react-icons/bs";
 import { GiBrickWall } from "react-icons/gi";
-import { RiContactsLine, RiContactsFill } from "react-icons/ri";
-import {
-  Link,
-  DirectLink,
-  Element,
-  Events,
-  animateScroll as scroll,
-  scrollSpy,
-  scroller,
-} from "react-scroll";
-import { Scroll } from "react-scroll/modules/mixins/Helpers";
+import ThemeToggleList from "./ThemeToggleList";
+
+const navigationItems = [
+  {
+    name: "home",
+    icons: {
+      iconOutline: <AiOutlineHome />,
+      iconFill: <AiFillHome />,
+    },
+  },
+  {
+    name: "about",
+    icons: {
+      iconOutline: <AiOutlineInfoCircle />,
+      iconFill: <AiFillInfoCircle />,
+    },
+  },
+  {
+    name: "projects",
+    icons: {
+      iconOutline: <BsBricks />,
+      iconFill: <GiBrickWall />,
+    },
+  },
+  //{
+  //  name: "contacts",
+  //  icons: {
+  //    iconOutline: <RiContactsLine />,
+  //    iconFill: <RiContactsFill />,
+  //  },
+  //},
+];
 
 export default function Navigation() {
   const [hoveredLink, setHoveredLink] = useState("");
   const [currentLink, setCurrentLink] = useState("home");
+  const { selectedTheme } = useContext(ThemeContext);
+
+  const themeStyles = {
+    backgroundColor: selectedTheme.colors.navigationBg,
+  };
 
   useEffect(() => {
     Events.scrollEvent.register("begin", function (to, element) {
-      console.log("begin", arguments[0]);
       setCurrentLink(to);
-    });
-
-    Events.scrollEvent.register("end", function (to, element) {
-      console.log("end", arguments);
     });
 
     scrollSpy.update();
@@ -41,118 +73,26 @@ export default function Navigation() {
     };
   }, []);
 
-  function scrollToTop() {
-    scroll.scrollToTop();
-  }
-
-  function scrollToBottom() {
-    scroll.scrollToBottom();
-  }
-
-  function scrollTo() {
-    scroll.scrollTo(100);
-  }
-
-  function scrollMore() {
-    scroll.scrollMore(100);
-  }
-
   function handleSetActive(to) {
     setCurrentLink(to);
-		console.log(to)
   }
 
   return (
-    <nav className="navigation">
-      <ul className="navigation__list">
-        <li className="navigation__item">
-          <Link
-            onMouseOver={() => {
-              setHoveredLink("home");
-            }}
-            onMouseOut={() => {
-              setHoveredLink("");
-            }}
-            offset={0}
-            onSetActive={() => handleSetActive("home")}
-            spy={true}
-            //activeClass="active"
-            to="home"
-            className="navigation__link"
-          >
-            {hoveredLink === "home" || currentLink === "home" ? (
-              <AiFillHome />
-            ) : (
-              <AiOutlineHome />
-            )}
-          </Link>
-        </li>
-        <li className="navigation__item">
-          <Link
-            onMouseOver={() => {
-              setHoveredLink("about");
-            }}
-            onMouseOut={() => {
-              setHoveredLink("");
-            }}
-            offset={-50}
-            onSetActive={() => handleSetActive("about")}
-            spy={true}
-            activeClass="active"
-            to="about"
-            className="navigation__link"
-          >
-            {hoveredLink === "about" || currentLink === "about" ? (
-              <AiFillInfoCircle />
-            ) : (
-              <AiOutlineInfoCircle />
-            )}
-          </Link>
-        </li>
-        <li className="navigation__item">
-          <Link
-            onMouseOver={() => {
-              setHoveredLink("projects");
-            }}
-            onMouseOut={() => {
-              setHoveredLink("");
-            }}
-            offset={-50}
-            onSetActive={() => handleSetActive("projects")}
-            spy={true}
-            //activeClass="active"
-            to="projects"
-            className="navigation__link"
-          >
-            {hoveredLink === "projects" || currentLink === "projects" ? (
-              <GiBrickWall />
-            ) : (
-              <BsBricks />
-            )}
-          </Link>
-        </li>
-        <li className="navigation__item">
-          <Link
-            onMouseOver={() => {
-              setHoveredLink("contacts");
-            }}
-            onMouseOut={() => {
-              setHoveredLink("");
-            }}
-            onSetActive={() => handleSetActive("contacts")}
-            spy={true}
-            activeClass="active"
-            to="contacts"
-            className="navigation__link"
-          >
-            {hoveredLink === "contacts" || currentLink === "contacts" ? (
-              <RiContactsFill />
-            ) : (
-              <RiContactsLine />
-            )}
-          </Link>
-        </li>
-      </ul>
+    <nav className="navigation" style={themeStyles}>
+      <NavigationList>
+					<ThemeToggleList />
+        {navigationItems.map((navItem, index) => (
+          <NavigationItem
+            key={index}
+            icons={navItem.icons}
+            name={navItem.name}
+            hoveredLink={hoveredLink}
+            currentLink={currentLink}
+            handleSetActive={handleSetActive}
+            setHoveredLink={setHoveredLink}
+          />
+        ))}
+      </NavigationList>
     </nav>
   );
 }

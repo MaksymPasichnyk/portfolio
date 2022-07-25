@@ -1,7 +1,6 @@
 import Slider from "./Carousel";
 
 export default function About() {
-
   return (
     <section name="about" id="about" className="about">
 			<div className="container">

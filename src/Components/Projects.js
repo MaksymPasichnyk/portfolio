@@ -63,7 +63,7 @@ export default function Projects() {
           <p className="project-card__desc">{project.description}</p>
           <div className="project-card__stack">
             {project.stack.map((item, index) => {
-              return <img src={item} width={33} height={33} />;
+              return <img key={index} src={item} width={33} height={33} />;
             })}
           </div>
 					<a className="project-card__github-link" href={project.githubUrl} ><AiOutlineGithub /></a>

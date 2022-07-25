@@ -1,16 +1,41 @@
-import { AiOutlineHome, AiFillHome } from "react-icons/ai";
+import { useContext } from "react";
+import { Link } from "react-scroll";
+import { ThemeContext } from "../context/Theme";
 
 export default function NavigationItem(props) {
-	return (
-		<li className="navigation__item">
-			<Link
-				onMouseEnter={props.toggleHover}
-				onMouseLeave={props.toggleHover}
-				to="/home"
-				className="navigation__link"
-			>
-				{isHovered ? <AiFillHome /> : <AiOutlineHome />}
-			</Link>
-		</li>
-	)
+  const {
+    icons,
+    name,
+    hoveredLink,
+    currentLink,
+    handleSetActive,
+    setHoveredLink,
+  } = props;
+
+	const { selectedTheme } = useContext(ThemeContext);
+
+	const themeStyles = selectedTheme.colors.link;
+
+  return (
+    <li className="navigation__item">
+      <Link
+				style={themeStyles}
+        onMouseOver={() => {
+          setHoveredLink(name);
+        }}
+        onMouseOut={() => {
+          setHoveredLink("");
+        }}
+        offset={-45}
+        onSetActive={() => handleSetActive(name)}
+        spy={true}
+        to={name}
+        className="navigation__link"
+      >
+        {hoveredLink === name || currentLink === name
+          ? icons.iconFill
+          : icons.iconOutline}
+      </Link>
+    </li>
+  );
 }
