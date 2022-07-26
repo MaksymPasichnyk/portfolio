@@ -7,8 +7,8 @@ const ThemeContext = createContext();
 const ThemeContextProvider = (props) => {
   const { theme, themeLoaded, getFonts, themes } = useTheme();
   const [selectedTheme, setSelectedTheme] = useState(theme);
+	const [isThemeDialogOpen, setIsThemeDialogOpen] = useState(false);
 
-	console.log(themeLoaded)
 
   useEffect(() => {
     setSelectedTheme(theme);
@@ -23,7 +23,7 @@ const ThemeContextProvider = (props) => {
   });
 
   return (
-    <ThemeContext.Provider value={{selectedTheme}}>
+    <ThemeContext.Provider value={{ selectedTheme, setSelectedTheme, setIsThemeDialogOpen, isThemeDialogOpen }}>
       {props.children}
     </ThemeContext.Provider>
   );

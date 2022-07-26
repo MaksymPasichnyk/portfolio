@@ -8,7 +8,6 @@ import * as themes from "./theme/schema.json";
 import { setToLocalStorage } from "./utils/storage";
 
 const Index = () => {
-	console.log(themes)
 	setToLocalStorage("all-themes", themes.default);
 
   return <App />;

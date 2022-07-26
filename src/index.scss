@@ -16,6 +16,7 @@
 @import url(./styles/components/projects.scss);
 @import url(./styles/components/footer.scss);
 @import url(./styles/components/theme-toggle-list.scss);
+@import url(./styles/components/create-theme.scss);
 
 * {
 	box-sizing: border-box;
@@ -101,6 +102,7 @@ body {
 // wrap
 .modal-wrap {
 	z-index: 1;
+	transition: all .3s;
 	//height: 100vh;
 	//pointer-events: none;
 	//position: fixed;

@@ -7,6 +7,7 @@ import { ThemeContext } from "../context/Theme";
 import NavigationList from "./NavigationList";
 import NavigationItem from "./NavigationItem";
 import ThemeToggleButton from "./ThemeToggleList";
+import ThemeButton from "./ThemeButton";
 
 // import icons 
 import { RiContactsLine, RiContactsFill } from "react-icons/ri";
@@ -79,6 +80,7 @@ export default function Navigation() {
 
   return (
     <nav className="navigation" style={themeStyles}>
+			<ThemeButton />
       <NavigationList>
 					<ThemeToggleList />
         {navigationItems.map((navItem, index) => (
