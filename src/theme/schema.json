@@ -6,7 +6,7 @@
       "colors": {
         "body": "#411f19",
         "text": "#f5deb3",
-				"navigationBg": "#000000",
+				"borderColor": "#f5deb3",
         "button": {
           "text": "#FFFFFF",
           "background": "#000000"
@@ -24,6 +24,7 @@
       "colors": {
         "body": "#f5deb3",
         "text": "#411f19",
+				"borderColor": "#411f19",
         "button": {
           "text": "#ffffff",
           "background": "#0d47a1"

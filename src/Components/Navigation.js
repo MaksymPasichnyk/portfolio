@@ -49,6 +49,7 @@ const navigationItems = [
   //    iconOutline: <RiContactsLine />,
   //    iconFill: <RiContactsFill />,
   //  },
+	
   //},
 ];
 
@@ -82,7 +83,6 @@ export default function Navigation() {
     <nav className="navigation" style={themeStyles}>
 			<ThemeButton />
       <NavigationList>
-					<ThemeToggleList />
         {navigationItems.map((navItem, index) => (
           <NavigationItem
             key={index}

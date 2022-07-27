@@ -19,5 +19,5 @@ export const useTheme = () => {
 	}
 
 
-	return { theme, themeLoaded, setThemeMode, getFonts, setTheme }
+	return { theme, themeLoaded, setThemeMode, getFonts, setTheme, themes}
 };

@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import test from "../assets/web-nestflix.jpeg";
 import snakeImg from "../assets/snake-img.png";
 import css from "../assets/icons/css.png";
@@ -10,7 +11,11 @@ import html from "../assets/icons/html.png";
 import tailwind from "../assets/icons/tailwind.svg";
 import { AiOutlineGithub } from "react-icons/ai"
 
+import { ThemeContext } from "../context/Theme";
+
 export default function Projects() {
+	const { selectedTheme } = useContext(ThemeContext)
+ 
   const projects = [
     {
       title: "Snake Game",
@@ -51,13 +56,23 @@ export default function Projects() {
     },
   ];
 
+	const projectCardStyles = {
+		borderColor: selectedTheme.colors.text,
+	}
+
+	const projectCardInfoStyles = {
+		backgroundColor: selectedTheme.colors.text,
+		opacity: 0.9,
+		color: selectedTheme.colors.body,
+	}
+
   const projectElements = projects.map((project, index) => (
-    <div key={index} className="project-card">
+    <div style={projectCardStyles} key={index} className="project-card">
       <div className="project-card__inner">
         <div className="project-card__img">
           <img src={project.imgUrl} width="100%" height="320px" />
         </div>
-        <div className="project-card__info">
+        <div style={projectCardInfoStyles} className="project-card__info">
           <a className="project-card__link" href={project.url}></a>
           <h5 className="project-card__title">{project.title}</h5>
           <p className="project-card__desc">{project.description}</p>
