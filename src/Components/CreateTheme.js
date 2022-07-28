@@ -134,9 +134,11 @@ export default function CreateTheme() {
     );
   });
 
+	console.log(isThemeDialogOpen)
+
   return (
     <dialog
-      open={isThemeDialogOpen ? "open" : ""}
+      //open={isThemeDialogOpen ? "open" : ""}
       className="create-theme-modal"
     >
       <div className="create-theme-modal__container">
