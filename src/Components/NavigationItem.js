@@ -14,12 +14,13 @@ export default function NavigationItem(props) {
 
 	const { selectedTheme } = useContext(ThemeContext);
 
-	const themeStyles = selectedTheme.colors.link;
+	//const themeStyles = {
+	//	color: selectedTheme.colors.link.color,
+	//}
 
   return (
     <li className="navigation__item">
       <Link
-				style={themeStyles}
         onMouseOver={() => {
           setHoveredLink(name);
         }}

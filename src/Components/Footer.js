@@ -10,14 +10,12 @@ export default function Footer() {
 	const social = [<AiOutlineInstagram/>, <AiOutlineLinkedin/>, <AiOutlineGithub/>, <SiGmail/>];
 	const { selectedTheme } = useContext(ThemeContext);
 
-	console.log(selectedTheme)
-
 	const footerStyles = {
 		backgroundColor: selectedTheme.colors.text,
 	}
 
 	const navStyles = {
-		color: selectedTheme.colors.body,
+		color: selectedTheme.colors.linkColor,
 	}
 
 	const elements = social.map((item, index) => (

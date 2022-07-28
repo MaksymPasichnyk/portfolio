@@ -5,11 +5,13 @@ import App from "./App";
 import { ThemeContextProvider, ThemeContext } from "./context/Theme";
 
 import * as themes from "./theme/schema.json";
-import { setToLocalStorage } from "./utils/storage";
+import { setToLocalStorage, getFromLocalStorage } from "./utils/storage";
+
+if (!getFromLocalStorage("all-themes")) {
+  setToLocalStorage("all-themes", themes.default);
+}
 
 const Index = () => {
-	setToLocalStorage("all-themes", themes.default);
-
   return <App />;
 };
 

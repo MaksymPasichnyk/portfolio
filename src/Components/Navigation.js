@@ -58,8 +58,9 @@ export default function Navigation() {
   const [currentLink, setCurrentLink] = useState("home");
   const { selectedTheme } = useContext(ThemeContext);
 
-  const themeStyles = {
-    backgroundColor: selectedTheme.colors.navigationBg,
+  const navStyles = {
+    backgroundColor: selectedTheme.colors.text,
+		color: selectedTheme.colors.linkColor,
   };
 
   useEffect(() => {
@@ -80,7 +81,7 @@ export default function Navigation() {
   }
 
   return (
-    <nav className="navigation" style={themeStyles}>
+    <nav style={navStyles} className="navigation">
 			<ThemeButton />
       <NavigationList>
         {navigationItems.map((navItem, index) => (
