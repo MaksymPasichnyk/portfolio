@@ -39,9 +39,15 @@
 		display: flex;
 		cursor: pointer;
 		transition: all .3s;
+		color: inherit;
 
 		&:hover {
 			opacity: .7;
+		}
+
+		&:visited,
+		&:active {
+			color: inherit
 		}
 	}
 }
