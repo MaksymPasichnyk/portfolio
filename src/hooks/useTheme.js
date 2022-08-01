@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { getFromLocalStorage, setToLocalStorage } from "../utils/storage";
 import _ from "lodash";
 

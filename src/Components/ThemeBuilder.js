@@ -1,14 +1,11 @@
-import { useState, useContext, useEffect, useRef } from "react";
+import { useState, useContext, useRef } from "react";
 import { useTheme } from "../hooks/useTheme";
 import { ThemeContext } from "../context/Theme";
 import { nanoid } from "nanoid";
 import { setToLocalStorage, getFromLocalStorage } from "../utils/storage";
 import ThemeButton from "./ThemeButton";
 
-export default function CreateTheme() {
-  const { getfont } = useTheme();
-  const { isThemeDialogOpen, setIsThemeDialogOpen } = useContext(ThemeContext);
-  const [newTheme, setNewTheme] = useState({});
+export default function ThemeBuilder() {
   const { themes } = useTheme();
   const [customThemes, setCustomThemes] = useState(themes);
   const { setSelectedTheme, selectedTheme } = useContext(ThemeContext);
@@ -22,9 +19,8 @@ export default function CreateTheme() {
   };
   const [formTheme, setFormTheme] = useState(currentTheme);
   const ref = useRef(null);
-  console.log(selectedTheme);
 
-  function handleformTheme(event) {
+  function handleFormChangesField(event) {
     const { name, value } = event.target;
     setFormTheme((prevformTheme) => {
       return {
@@ -34,6 +30,7 @@ export default function CreateTheme() {
     });
   }
 
+  // styles
   const dialogMainStyles = {
     backgroundColor: selectedTheme.colors.body,
     color: selectedTheme.colors.text,
@@ -44,6 +41,25 @@ export default function CreateTheme() {
     color: selectedTheme.colors.body,
   };
 
+  const previewBlockStyles = {
+    backgroundColor: formTheme.backgroundColor,
+    color: formTheme.textColor,
+    fontFamily: formTheme.font,
+    borderColor: formTheme.borderColor,
+  };
+
+  const linkStyles = {
+    color: formTheme.linkColor,
+    backgroundColor: formTheme.textColor,
+  };
+
+  const fieldColorsStyles = {
+    backgroundColor: selectedTheme.colors.borderColor,
+    color: selectedTheme.colors.text,
+  };
+
+  /* **************** */
+
   function handleClick(themeName) {
     const allThemes = getFromLocalStorage("all-themes");
     const mode = allThemes.data[themeName];
@@ -51,7 +67,6 @@ export default function CreateTheme() {
 
     setSelectedTheme(mode);
     setToLocalStorage("theme", mode);
-    console.log(mode);
 
     setFormTheme({
       themeName: mode.name,
@@ -81,31 +96,7 @@ export default function CreateTheme() {
     return themeObj;
   };
 
-  useEffect(() => {
-    const updated = getThemeObj();
-    setNewTheme({ ...updated });
-  }, [formTheme]);
-
-  useEffect(() => {
-    const themeModal = ref.current;
-
-    console.log(themeModal);
-    //themeModal.showModal();
-  }, []);
-
-  const previewBlockStyles = {
-    backgroundColor: formTheme.backgroundColor,
-    color: formTheme.textColor,
-    fontFamily: formTheme.font,
-    borderColor: formTheme.borderColor,
-  };
-
-  const linkStyles = {
-    color: formTheme.linkColor,
-    backgroundColor: formTheme.textColor,
-  };
-
-  function handleSubmit(event) {
+  function handleSubmitThemeForm(event) {
     event.preventDefault();
     const allThemes = themes;
     const updated = getThemeObj();
@@ -113,7 +104,16 @@ export default function CreateTheme() {
 
     setCustomThemes(allThemes);
     setToLocalStorage("all-themes", allThemes);
-    //console.log(getThemeObj());
+  }
+
+  function openThemeModal() {
+    ref.current.showModal();
+		document.body.style.overflow = 'hidden';
+  }
+
+  function closeThemeModal() {
+    ref.current.close();
+		document.body.style.overflow = 'unset';
   }
 
   const themeElements = Object.entries(customThemes.data).map((item) => {
@@ -142,24 +142,16 @@ export default function CreateTheme() {
     );
   });
 
-  function openThemeModal() {
-    ref.current.showModal();
-  }
-
-  function closeThemeModal() {
-    ref.current.close();
-  }
-
   return (
     <>
       <ThemeButton openThemeModal={openThemeModal} />
-      <dialog 
-				ref={ref} 
-				className="create-theme-modal"
-				style={{
-					borderColor: selectedTheme.colors.text
-				}}
-			>
+      <dialog
+        ref={ref}
+        className="create-theme-modal"
+        style={{
+          borderColor: selectedTheme.colors.text,
+        }}
+      >
         <div className="create-theme-modal__container">
           <div
             className="create-theme-modal__header"
@@ -172,14 +164,14 @@ export default function CreateTheme() {
           </div>
           <div className="create-theme-modal__main" style={dialogMainStyles}>
             <div className="create-theme-modal__left">
-              <form onSubmit={handleSubmit} className="theme-form">
+              <form onSubmit={handleSubmitThemeForm} className="theme-form">
                 <div className="theme-form__group">
                   <label>Theme Name</label>
                   <input
                     name="themeName"
                     type="text"
                     value={formTheme.themeName}
-                    onChange={handleformTheme}
+                    onChange={handleFormChangesField}
                     className="theme-form__field"
                     style={dialogMainStyles}
                   />
@@ -190,8 +182,8 @@ export default function CreateTheme() {
                     name="backgroundColor"
                     type="color"
                     value={formTheme.backgroundColor}
-                    onChange={handleformTheme}
-                    style={dialogMainStyles}
+                    onChange={handleFormChangesField}
+                    style={fieldColorsStyles}
                     className="theme-form__color-field"
                   />
                 </div>
@@ -201,8 +193,8 @@ export default function CreateTheme() {
                     name="textColor"
                     type="color"
                     value={formTheme.textColor}
-                    onChange={handleformTheme}
-                    style={dialogMainStyles}
+                    onChange={handleFormChangesField}
+                    style={fieldColorsStyles}
                     className="theme-form__color-field"
                   />
                 </div>
@@ -212,8 +204,8 @@ export default function CreateTheme() {
                     name="linkColor"
                     type="color"
                     value={formTheme.linkColor}
-                    onChange={handleformTheme}
-                    style={dialogMainStyles}
+                    onChange={handleFormChangesField}
+                    style={fieldColorsStyles}
                     className="theme-form__color-field"
                   />
                 </div>
@@ -223,8 +215,8 @@ export default function CreateTheme() {
                     name="borderColor"
                     type="color"
                     value={formTheme.borderColor}
-                    onChange={handleformTheme}
-                    style={dialogMainStyles}
+                    onChange={handleFormChangesField}
+                    style={fieldColorsStyles}
                     className="theme-form__color-field"
                   />
                 </div>
@@ -233,7 +225,7 @@ export default function CreateTheme() {
                   <select
                     name="font"
                     value={formTheme.font}
-                    onChange={handleformTheme}
+                    onChange={handleFormChangesField}
                     className="theme-form__field"
                     style={dialogMainStyles}
                   >

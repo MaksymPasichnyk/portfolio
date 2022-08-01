@@ -4,10 +4,10 @@
       "id": "T_001",
       "name": "Dark",
       "colors": {
-        "body": "#411f19",
-        "text": "#f5deb3",
-				"borderColor": "#f5deb3",
-				"linkColor": "#411f19",
+        "body": "#212121",
+        "text": "#c8d8e4",
+        "linkColor": "#000000",
+				"borderColor": "#c8d8e4",
         "button": {
           "text": "#FFFFFF",
           "background": "#000000"
@@ -17,16 +17,16 @@
           "opacity": 1
         }
       },
-      "font": "Ubuntu"
+      "font": "Syne"
     },
     "light": {
       "id": "T_007",
       "name": "Light",
       "colors": {
-        "body": "#f5deb3",
-        "text": "#411f19",
-				"borderColor": "#411f19",
-				"linkColor": "#f5deb3",
+        "body": "#c8d8e4",
+        "text": "#212121",
+        "borderColor": "#212121",
+        "linkColor": "#ffffff",
         "button": {
           "text": "#ffffff",
           "background": "#0d47a1"
@@ -36,8 +36,7 @@
           "opacity": 0.8
         }
       },
-      "font": "Ubuntu"
+      "font": "Syne"
     }
   }
 }
-

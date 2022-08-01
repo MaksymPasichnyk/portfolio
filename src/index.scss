@@ -15,8 +15,7 @@
 @import url(./styles/components/about.scss);
 @import url(./styles/components/projects.scss);
 @import url(./styles/components/footer.scss);
-@import url(./styles/components/theme-toggle-list.scss);
-@import url(./styles/components/create-theme.scss);
+@import url(./styles/components/theme-builder.scss);
 
 * {
 	box-sizing: border-box;
@@ -95,19 +94,13 @@ html {
 body {
 	font-size: 5rem;
   background-color: var(--color-bg);
-	color: #272343;
-	// #411f19
+	color: #272343;	
 }
 
 // wrap
 .modal-wrap {
 	z-index: 1;
 	transition: all .3s;
-	//height: 100vh;
-	//pointer-events: none;
-	//position: fixed;
-	//width: 100vw;
-	//z-index: 100;
 }
 
 .flex {

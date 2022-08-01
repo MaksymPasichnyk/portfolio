@@ -5,10 +5,8 @@ import WebFont from "webfontloader";
 const ThemeContext = createContext();
 
 const ThemeContextProvider = (props) => {
-  const ref = useRef(null);
-  const { theme, themeLoaded, getFonts, themes } = useTheme();
+  const { theme, themeLoaded, getFonts } = useTheme();
   const [selectedTheme, setSelectedTheme] = useState(theme);
-  const [isThemeDialogOpen, setIsThemeDialogOpen] = useState(false);
 
   useEffect(() => {
     setSelectedTheme(theme);
@@ -22,23 +20,11 @@ const ThemeContextProvider = (props) => {
     });
   });
 
-  function showThemeModal(modal) {
-    modal.showModal();
-  }
-
-  function closeThemeModal(modal) {
-    modal.close();
-  }
-
   return (
     <ThemeContext.Provider
       value={{
         selectedTheme,
         setSelectedTheme,
-        setIsThemeDialogOpen,
-        isThemeDialogOpen,
-        showThemeModal,
-        closeThemeModal,
       }}
     >
       {props.children}

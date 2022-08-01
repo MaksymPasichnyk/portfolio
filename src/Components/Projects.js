@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import test from "../assets/web-nestflix.jpeg";
 import snakeImg from "../assets/snake-img.png";
+import awesomeChatImg from "../assets/awesome-chat.png";
+import quizzImg from "../assets/quizz-app.png";
 import css from "../assets/icons/css.png";
 import gulp from "../assets/icons/gulp.png";
 import javascript from "../assets/icons/javascript.png";
@@ -15,40 +17,27 @@ import { ThemeContext } from "../context/Theme";
 
 const projects = [
   {
+    title: "Awesome Chat",
+    description: "Just chat application using Firebase integrataion",
+    imgUrl: awesomeChatImg,
+    stack: [react, sass],
+    url: "https://awesome-chat-appl.netlify.app/",
+    githubUrl: "https://github.com/MaksymPasichnyk/react-chat-app",
+  },
+  {
+    title: "Quizzical",
+    description: "Quiz app",
+    imgUrl: quizzImg,
+    stack: [react, sass, javascript],
+    url: "https://quizzical-appli.netlify.app/",
+    githubUrl: "https://github.com/MaksymPasichnyk/react-quizzical-app",
+  },
+  {
     title: "Snake Game",
     description: "Simple snake game",
     url: "https://maksympasichnyk.github.io/snake-game/",
     imgUrl: snakeImg,
     stack: [html, css, javascript],
-    githubUrl: "https://github.com/MaksymPasichnyk",
-  },
-  {
-    title: "Startup2",
-    description:
-      "Description thaat should be here so i need to write everything that i want so fsdasdasd",
-    imgUrl: test,
-    stack: [react, sass, gulp],
-    githubUrl: "https://github.com/MaksymPasichnyk",
-  },
-  {
-    title: "Startup3",
-    description: "Development",
-    imgUrl: test,
-    stack: [html, tailwind, javascript],
-    githubUrl: "https://github.com/MaksymPasichnyk",
-  },
-  {
-    title: "Startup4",
-    description: "Development",
-    imgUrl: test,
-    stack: [phaser, javascript],
-    githubUrl: "https://github.com/MaksymPasichnyk",
-  },
-  {
-    title: "Startup5",
-    description: "Development",
-    imgUrl: test,
-    stack: [tailwind, react],
     githubUrl: "https://github.com/MaksymPasichnyk",
   },
 ];
