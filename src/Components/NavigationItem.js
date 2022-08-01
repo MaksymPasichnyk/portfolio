@@ -1,6 +1,4 @@
-import { useContext } from "react";
 import { Link } from "react-scroll";
-import { ThemeContext } from "../context/Theme";
 
 export default function NavigationItem(props) {
   const {
@@ -11,12 +9,6 @@ export default function NavigationItem(props) {
     handleSetActive,
     setHoveredLink,
   } = props;
-
-	const { selectedTheme } = useContext(ThemeContext);
-
-	//const themeStyles = {
-	//	color: selectedTheme.colors.link.color,
-	//}
 
   return (
     <li className="navigation__item">

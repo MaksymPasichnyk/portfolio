@@ -1,11 +1,11 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import { useTheme } from "../hooks/useTheme";
 import { ThemeContext } from "../context/Theme";
 import { nanoid } from "nanoid";
 import { setToLocalStorage, getFromLocalStorage } from "../utils/storage";
+import ThemeButton from "./ThemeButton";
 
 export default function CreateTheme() {
-
   const { getfont } = useTheme();
   const { isThemeDialogOpen, setIsThemeDialogOpen } = useContext(ThemeContext);
   const [newTheme, setNewTheme] = useState({});
@@ -20,8 +20,9 @@ export default function CreateTheme() {
     linkColor: selectedTheme.colors.linkColor,
     font: selectedTheme.font,
   };
-	const [formTheme, setFormTheme] = useState(currentTheme);
-	console.log(selectedTheme)
+  const [formTheme, setFormTheme] = useState(currentTheme);
+  const ref = useRef(null);
+  console.log(selectedTheme);
 
   function handleformTheme(event) {
     const { name, value } = event.target;
@@ -33,15 +34,15 @@ export default function CreateTheme() {
     });
   }
 
-	const dialogMainStyles = {
-		backgroundColor: selectedTheme.colors.body,
-		color: selectedTheme.colors.text
-	}
+  const dialogMainStyles = {
+    backgroundColor: selectedTheme.colors.body,
+    color: selectedTheme.colors.text,
+  };
 
-	const dialogHeaderStyles = {
-		backgroundColor: selectedTheme.colors.text,
-		color: selectedTheme.colors.body
-	}
+  const dialogHeaderStyles = {
+    backgroundColor: selectedTheme.colors.text,
+    color: selectedTheme.colors.body,
+  };
 
   function handleClick(themeName) {
     const allThemes = getFromLocalStorage("all-themes");
@@ -85,6 +86,13 @@ export default function CreateTheme() {
     setNewTheme({ ...updated });
   }, [formTheme]);
 
+  useEffect(() => {
+    const themeModal = ref.current;
+
+    console.log(themeModal);
+    //themeModal.showModal();
+  }, []);
+
   const previewBlockStyles = {
     backgroundColor: formTheme.backgroundColor,
     color: formTheme.textColor,
@@ -94,7 +102,7 @@ export default function CreateTheme() {
 
   const linkStyles = {
     color: formTheme.linkColor,
-		backgroundColor: formTheme.textColor,
+    backgroundColor: formTheme.textColor,
   };
 
   function handleSubmit(event) {
@@ -134,133 +142,141 @@ export default function CreateTheme() {
     );
   });
 
-	console.log(isThemeDialogOpen)
+  function openThemeModal() {
+    ref.current.showModal();
+  }
+
+  function closeThemeModal() {
+    ref.current.close();
+  }
 
   return (
-    <dialog
-      //open={isThemeDialogOpen ? "open" : ""}
-      className="create-theme-modal"
-    >
-      <div className="create-theme-modal__container">
-        <div
-				 	className="create-theme-modal__header"
-					style={dialogHeaderStyles}
-				>
-          <h3 className="title">Create a Theme</h3>
+    <>
+      <ThemeButton openThemeModal={openThemeModal} />
+      <dialog 
+				ref={ref} 
+				className="create-theme-modal"
+				style={{
+					borderColor: selectedTheme.colors.text
+				}}
+			>
+        <div className="create-theme-modal__container">
           <div
-            onClick={() => {
-              setIsThemeDialogOpen(false);
-            }}
-            className="close"
+            className="create-theme-modal__header"
+            style={dialogHeaderStyles}
           >
-						x
+            <h3 className="title">Create a Theme</h3>
+            <div onClick={closeThemeModal} className="close">
+              x
+            </div>
           </div>
-        </div>
-        <div
-					className="create-theme-modal__main"
-					style={dialogMainStyles}
-				>
-          <div className="create-theme-modal__left">
-            <form onSubmit={handleSubmit} className="theme-form">
-              <div className="theme-form__group">
-                <label>Theme Name</label>
-                <input
-                  name="themeName"
-                  type="text"
-                  value={formTheme.themeName}
-                  onChange={handleformTheme}
-									className="theme-form__field"
-									style={dialogMainStyles}
-                />
-              </div>
-              <div className="theme-form__group">
-                <label>Primary Color:</label>
-                <input
-                  name="backgroundColor"
-                  type="color"
-                  value={formTheme.backgroundColor}
-                  onChange={handleformTheme}
-									style={dialogMainStyles}
-									className="theme-form__color-field"
-                />
-              </div>
-              <div className="theme-form__group">
-                <label>Secondary Color:</label>
-                <input
-                  name="textColor"
-                  type="color"
-                  value={formTheme.textColor}
-                  onChange={handleformTheme}
-									style={dialogMainStyles}
-									className="theme-form__color-field"
-                />
-              </div>
-              <div className="theme-form__group">
-                <label>Link Color:</label>
-                <input
-                  name="linkColor"
-                  type="color"
-                  value={formTheme.linkColor}
-                  onChange={handleformTheme}
-									style={dialogMainStyles}
-									className="theme-form__color-field"
-                />
-              </div>
-              <div className="theme-form__group">
-                <label>Border Color:</label>
-                <input
-                  name="borderColor"
-                  type="color"
-                  value={formTheme.borderColor}
-                  onChange={handleformTheme}
-									style={dialogMainStyles}
-									className="theme-form__color-field"
-                />
-              </div>
-              <div className="theme-form__group">
-                <label>Select a Font:</label>
-                <select
-                  name="font"
-                  value={formTheme.font}
-                  onChange={handleformTheme}
-									className="theme-form__field"
-									style={dialogMainStyles}
+          <div className="create-theme-modal__main" style={dialogMainStyles}>
+            <div className="create-theme-modal__left">
+              <form onSubmit={handleSubmit} className="theme-form">
+                <div className="theme-form__group">
+                  <label>Theme Name</label>
+                  <input
+                    name="themeName"
+                    type="text"
+                    value={formTheme.themeName}
+                    onChange={handleformTheme}
+                    className="theme-form__field"
+                    style={dialogMainStyles}
+                  />
+                </div>
+                <div className="theme-form__group">
+                  <label>Primary Color:</label>
+                  <input
+                    name="backgroundColor"
+                    type="color"
+                    value={formTheme.backgroundColor}
+                    onChange={handleformTheme}
+                    style={dialogMainStyles}
+                    className="theme-form__color-field"
+                  />
+                </div>
+                <div className="theme-form__group">
+                  <label>Secondary Color:</label>
+                  <input
+                    name="textColor"
+                    type="color"
+                    value={formTheme.textColor}
+                    onChange={handleformTheme}
+                    style={dialogMainStyles}
+                    className="theme-form__color-field"
+                  />
+                </div>
+                <div className="theme-form__group">
+                  <label>Link Color:</label>
+                  <input
+                    name="linkColor"
+                    type="color"
+                    value={formTheme.linkColor}
+                    onChange={handleformTheme}
+                    style={dialogMainStyles}
+                    className="theme-form__color-field"
+                  />
+                </div>
+                <div className="theme-form__group">
+                  <label>Border Color:</label>
+                  <input
+                    name="borderColor"
+                    type="color"
+                    value={formTheme.borderColor}
+                    onChange={handleformTheme}
+                    style={dialogMainStyles}
+                    className="theme-form__color-field"
+                  />
+                </div>
+                <div className="theme-form__group">
+                  <label>Select a Font:</label>
+                  <select
+                    name="font"
+                    value={formTheme.font}
+                    onChange={handleformTheme}
+                    className="theme-form__field"
+                    style={dialogMainStyles}
+                  >
+                    <option value="Syne">Syne</option>
+                    <option value="Playfair Display">Playfair Display</option>
+                    <option value="Mochiy Pop One">Mochiy Pop One</option>
+                  </select>
+                </div>
+                <button
+                  type="submit"
+                  className="theme-form__button"
+                  style={dialogMainStyles}
                 >
-                  <option value="Syne">Syne</option>
-                  <option value="Playfair Display">Playfair Display</option>
-                  <option value="Mochiy Pop One">Mochiy Pop One</option>
-                </select>
-              </div>
-              <button
-							 	type="submit"
-								className="theme-form__button"
-								style={dialogMainStyles}
-							>
-								Create theme
-							</button>
-            </form>
-          </div>
-          <div className="create-theme-modal__right">
-            <div className="theme-preview">
-              <h5 className="theme-preview__title">Preview</h5>
-              <div
-                style={previewBlockStyles}
-                className="theme-preview__display"
-              >
-                <p className="theme-preview__text">
-                  This is for preview only. Pick the color and font from the
-                  left side to see it working.
-                </p>
-								
-                <a className="theme-preview__link" style={linkStyles} href="#">
-                  Link example
-                </a>
+                  Create theme
+                </button>
+              </form>
+            </div>
+            <div className="create-theme-modal__right">
+              <div className="theme-preview">
+                <h5 className="theme-preview__title">Preview</h5>
+                <div
+                  style={previewBlockStyles}
+                  className="theme-preview__display"
+                >
+                  <p className="theme-preview__text">
+                    This is for preview only. Pick the color and font from the
+                    left side to see it working.
+                  </p>
+
+                  <a
+                    className="theme-preview__link"
+                    style={linkStyles}
+                    href="#"
+                  >
+                    Link example
+                  </a>
+                </div>
               </div>
             </div>
           </div>
+          <div className="custom-theme-list">{themeElements}</div>
         </div>
-        <div className="custom-theme-list">{themeElements}</div>
-      </div>
-    </dialog>
+      </dialog>
+    </>
   );
 }

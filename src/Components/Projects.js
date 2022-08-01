@@ -9,62 +9,62 @@ import react from "../assets/icons/react.png";
 import sass from "../assets/icons/sass.png";
 import html from "../assets/icons/html.png";
 import tailwind from "../assets/icons/tailwind.svg";
-import { AiOutlineGithub } from "react-icons/ai"
+import { AiOutlineGithub } from "react-icons/ai";
 
 import { ThemeContext } from "../context/Theme";
 
+const projects = [
+  {
+    title: "Snake Game",
+    description: "Simple snake game",
+    url: "https://maksympasichnyk.github.io/snake-game/",
+    imgUrl: snakeImg,
+    stack: [html, css, javascript],
+    githubUrl: "https://github.com/MaksymPasichnyk",
+  },
+  {
+    title: "Startup2",
+    description:
+      "Description thaat should be here so i need to write everything that i want so fsdasdasd",
+    imgUrl: test,
+    stack: [react, sass, gulp],
+    githubUrl: "https://github.com/MaksymPasichnyk",
+  },
+  {
+    title: "Startup3",
+    description: "Development",
+    imgUrl: test,
+    stack: [html, tailwind, javascript],
+    githubUrl: "https://github.com/MaksymPasichnyk",
+  },
+  {
+    title: "Startup4",
+    description: "Development",
+    imgUrl: test,
+    stack: [phaser, javascript],
+    githubUrl: "https://github.com/MaksymPasichnyk",
+  },
+  {
+    title: "Startup5",
+    description: "Development",
+    imgUrl: test,
+    stack: [tailwind, react],
+    githubUrl: "https://github.com/MaksymPasichnyk",
+  },
+];
+
 export default function Projects() {
-	const { selectedTheme } = useContext(ThemeContext)
- 
-  const projects = [
-    {
-      title: "Snake Game",
-      description: "Simple snake game",
-      url: "https://maksympasichnyk.github.io/snake-game/",
-      imgUrl: snakeImg,
-      stack: [html, css, javascript],
-			githubUrl: 'https://github.com/MaksymPasichnyk'
-    },
-    {
-      title: "Startup2",
-      description:
-        "Description thaat should be here so i need to write everything that i want so fsdasdasd",
-      imgUrl: test,
-      stack: [react, sass, gulp],
-			githubUrl: 'https://github.com/MaksymPasichnyk'
-    },
-    {
-      title: "Startup3",
-      description: "Development",
-      imgUrl: test,
-      stack: [html, tailwind, javascript],
-			githubUrl: 'https://github.com/MaksymPasichnyk'
-    },
-    {
-      title: "Startup4",
-      description: "Development",
-      imgUrl: test,
-      stack: [phaser, javascript],
-			githubUrl: 'https://github.com/MaksymPasichnyk'
-    },
-    {
-      title: "Startup5",
-      description: "Development",
-      imgUrl: test,
-      stack: [tailwind, react],
-			githubUrl: 'https://github.com/MaksymPasichnyk'
-    },
-  ];
+  const { selectedTheme } = useContext(ThemeContext);
 
-	const projectCardStyles = {
-		borderColor: selectedTheme.colors.text,
-	}
+  const projectCardStyles = {
+    borderColor: selectedTheme.colors.text,
+  };
 
-	const projectCardInfoStyles = {
-		backgroundColor: selectedTheme.colors.text,
-		opacity: 0.9,
-		color: selectedTheme.colors.body,
-	}
+  const projectCardInfoStyles = {
+    backgroundColor: selectedTheme.colors.text,
+    opacity: 0.9,
+    color: selectedTheme.colors.body,
+  };
 
   const projectElements = projects.map((project, index) => (
     <div style={projectCardStyles} key={index} className="project-card">
@@ -81,7 +81,9 @@ export default function Projects() {
               return <img key={index} src={item} width={33} height={33} />;
             })}
           </div>
-					<a className="project-card__github-link" href={project.githubUrl} ><AiOutlineGithub /></a>
+          <a className="project-card__github-link" href={project.githubUrl}>
+            <AiOutlineGithub />
+          </a>
         </div>
       </div>
     </div>

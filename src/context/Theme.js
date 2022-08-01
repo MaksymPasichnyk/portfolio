@@ -1,14 +1,14 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useRef } from "react";
 import { useTheme } from "../hooks/useTheme";
 import WebFont from "webfontloader";
 
 const ThemeContext = createContext();
 
 const ThemeContextProvider = (props) => {
+  const ref = useRef(null);
   const { theme, themeLoaded, getFonts, themes } = useTheme();
   const [selectedTheme, setSelectedTheme] = useState(theme);
-	const [isThemeDialogOpen, setIsThemeDialogOpen] = useState(false);
-
+  const [isThemeDialogOpen, setIsThemeDialogOpen] = useState(false);
 
   useEffect(() => {
     setSelectedTheme(theme);
@@ -22,8 +22,25 @@ const ThemeContextProvider = (props) => {
     });
   });
 
+  function showThemeModal(modal) {
+    modal.showModal();
+  }
+
+  function closeThemeModal(modal) {
+    modal.close();
+  }
+
   return (
-    <ThemeContext.Provider value={{ selectedTheme, setSelectedTheme, setIsThemeDialogOpen, isThemeDialogOpen }}>
+    <ThemeContext.Provider
+      value={{
+        selectedTheme,
+        setSelectedTheme,
+        setIsThemeDialogOpen,
+        isThemeDialogOpen,
+        showThemeModal,
+        closeThemeModal,
+      }}
+    >
       {props.children}
     </ThemeContext.Provider>
   );

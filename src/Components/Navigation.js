@@ -6,8 +6,6 @@ import {
 import { ThemeContext } from "../context/Theme";
 import NavigationList from "./NavigationList";
 import NavigationItem from "./NavigationItem";
-import ThemeToggleButton from "./ThemeToggleList";
-import ThemeButton from "./ThemeButton";
 
 // import icons 
 import { RiContactsLine, RiContactsFill } from "react-icons/ri";
@@ -19,7 +17,6 @@ import {
 } from "react-icons/ai";
 import { BsBricks } from "react-icons/bs";
 import { GiBrickWall } from "react-icons/gi";
-import ThemeToggleList from "./ThemeToggleList";
 
 const navigationItems = [
   {
@@ -72,7 +69,6 @@ export default function Navigation() {
 
     return () => {
       Events.scrollEvent.remove("begin");
-      Events.scrollEvent.remove("end");
     };
   }, []);
 
@@ -82,7 +78,6 @@ export default function Navigation() {
 
   return (
     <nav style={navStyles} className="navigation">
-			<ThemeButton />
       <NavigationList>
         {navigationItems.map((navItem, index) => (
           <NavigationItem
